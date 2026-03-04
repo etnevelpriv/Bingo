@@ -14,30 +14,24 @@
             {
                 {
                     string nev = Path.GetFileNameWithoutExtension(file);
-                    if (nev != "nevek")
+                    if (nev != "nevek" || jatekosok.Count < 100)
                     {
                         string[] sorok = File.ReadAllLines(file);
-                        List<int> szamok = new List<int>();
+                        List<string> szamok = new List<string>();
                         foreach (var sor in sorok)
                         {
                             string[] elemek = sor.Split(';');
 
                             foreach (var elem in elemek)
                             {
-                                if (int.TryParse(elem, out int szam))
-                                {
-                                    szamok.Add(szam);
-                                }
+                                szamok.Add(elem);
                             }
                         }
-                        jatekosok.Add(new BingoJatekos { Nev = nev, Szamok = szamok, Talalatok = new List<int>() });
+                        jatekosok.Add(new BingoJatekos { Nev = nev, Szamok = szamok, Talalatok = new List<string>()});
                     }
                 }
             }
-            foreach (var jatekos in jatekosok)
-            {
-                Console.WriteLine(jatekos);
-            }
+            Console.WriteLine($"4. Feladat: A játékosok száma: {jatekosok.Count()}");
         }
     }
 }
