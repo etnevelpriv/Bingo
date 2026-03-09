@@ -27,7 +27,7 @@
                                 szamok.Add(elem);
                             }
                         }
-                        jatekosok.Add(new BingoJatekos { Nev = nev, Szamok = szamok, Talalatok = new List<string>()});
+                        jatekosok.Add(new BingoJatekos(nev, szamok, new List<string>()));
                     }
                 }
             }
